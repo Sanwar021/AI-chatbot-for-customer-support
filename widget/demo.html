@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Dental Clinic - Advanced Oral Healthcare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #087b6d;
+      --primary-light: #169889;
+      --cyan: #38bdf8;
+      --orange: #ff6819;
+      --dark-bg: #020d0c;
+      --card-bg: rgba(7, 21, 43, 0.85);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--dark-bg);
+      background-image:
+        radial-gradient(circle at 18% 15%, rgba(23, 150, 132, 0.30), transparent 33%),
+        radial-gradient(circle at 86% 80%, rgba(212, 164, 74, 0.16), transparent 35%),
+        linear-gradient(120deg, #021513, #063c35 52%, #020e0d);
+      color: #f1f5f9;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(2, 13, 12, 0.85);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+    }
+    .logo-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+    .btn-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(8, 123, 109, 0.3);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(20px);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    .price-pill {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Hours Table */
+    .hours-box {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 32px;
+      margin: 40px 0 80px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hours-box h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 14px;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span:first-child { color: #94a3b8; }
+    .hours-row span:last-child { color: white; font-weight: 600; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 32px 0;
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="#" class="logo">
+        <div class="logo-badge">🦷</div>
+        <span>Demo Dental Clinic</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#hours">Hours</a>
+        <a href="#contact">Contact</a>
+        <a href="http://localhost:3000" target="_blank" style="color: var(--orange)">Admin Dashboard →</a>
+      </div>
+      <a href="#contact" class="btn-header">Book Appointment</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-badge">✨ Grounded AI Patient Care Live</div>
+      <h1>Excellence In Modern Oral & Dental Healthcare</h1>
+      <p>Providing precision aesthetic teeth whitening, gentle root canal therapy, invisible orthodontics, and same-day dental emergency relief.</p>
+    </section>
+
+    <section id="services" class="grid">
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h3>Laser Teeth Whitening</h3>
+        <p>In-office laser whitening producing up to 6 shades brighter teeth in a single 60-minute session.</p>
+        <span class="price-pill">$250 (Demo rate)</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>Routine Scaling & Cleaning</h3>
+        <p>Ultrasonic plaque removal, deep periodontal checkup, and high-shine fluoride polishing.</p>
+        <span class="price-pill">$85 (Demo rate)</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🦷</div>
+        <h3>Implants & Porcelain Crowns</h3>
+        <p>Titanium biocompatible fixtures and computer-milled ceramic crowns with 10-year durability.</p>
+        <span class="price-pill">$650 / tooth (Demo rate)</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Emergency Dental Pain Relief</h3>
+        <p>Same-day priority care for severe toothaches, broken teeth, infections, and emergency extractions.</p>
+        <span class="price-pill">$75 Consultation (Demo rate)</span>
+      </div>
+    </section>
+
+    <div id="hours" class="hours-box">
+      <h3>Clinic Operating Hours</h3>
+      <div class="hours-row">
+        <span>Monday - Friday</span>
+        <span>9:00 AM - 7:00 PM</span>
+      </div>
+      <div class="hours-row">
+        <span>Saturday</span>
+        <span>10:00 AM - 4:00 PM</span>
+      </div>
+      <div class="hours-row">
+        <span>Sunday</span>
+        <span style="color: #ef4444">Closed (Emergency On-Call)</span>
+      </div>
+      <div class="hours-row">
+        <span>Emergency Dental Line</span>
+        <span style="color: var(--cyan)">+1 (555) 321-4321</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Demo Dental Clinic. Powered by SupportPilot Multi-Tenant AI Platform.</p>
+    </div>
+  </footer>
+
+  <!-- EMBEDDABLE WEBSITE CHAT WIDGET -->
+  <script
+    src="/uploads/widget.js"
+    data-bot-key="sp_bot_demo_dental_clinic_2026"
+    data-api-base="http://localhost:8000">
+  </script>
+
+</body>
+</html>
